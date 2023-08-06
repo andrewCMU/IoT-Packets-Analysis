@@ -152,16 +152,18 @@ def generate_joblib(features_vetor):
     classifier.fit(X_train, y_train.values.ravel())
 
     y_pred = classifier.predict(X_test)
-    print("\tRF Accuracy", round(metrics.accuracy_score(y_test, y_pred),2))
+    #print("\tRF Accuracy", round(metrics.accuracy_score(y_test, y_pred),2))
 
     ## save RandomForestClassifier model
-    joblib.dump(classifier, "./random_forest.joblib")
+    #joblib.dump(classifier, "./random_forest.joblib")
 
     # #### K-Neighbors Classifier
 
     knn = KNeighborsClassifier(n_neighbors=20)
     knn.fit(X_train,  y_train.values.ravel())
     y_pred2 = knn.predict(X_test)
-    print("\tKNN Accuracy", round(metrics.accuracy_score(y_test, y_pred2),2))
+    #print("\tKNN Accuracy", round(metrics.accuracy_score(y_test, y_pred2),2))
 
-    joblib.dump(knn, "./KNeighborsClassifier.joblib")
+    #joblib.dump(knn, "./KNeighborsClassifier.joblib")
+
+    return round(metrics.accuracy_score(y_test, y_pred),2), round(metrics.accuracy_score(y_test, y_pred2),2)
